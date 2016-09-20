@@ -5,6 +5,7 @@
  * Copyright Brain, 2016.
  */
 
+#include <Brain.h>
 #include "BrainStation.h"
 
 BrainStation::BrainStation(LiquidCrystal *lcd, byte **sprites, int n_sprites)
@@ -20,5 +21,24 @@ BrainStation::BrainStation(LiquidCrystal *lcd, byte **sprites, int n_sprites)
 
 void BrainStation::update(Brain *brain)
 {
-    _lcd->write(byte(0));
+    if (!isGameOver(brain)) {
+        _lcd->clear();
+        delay(10);
+
+        for (int i = 0, n_objects = brain->get_value(N_OBJECTS_CELL);
+             i < n_objects;
+             i++) {
+            int cell_base = i * CTRL_CELLS;
+            int s = brain->get_value(cell_base + NUM_SPRITE_BASE_CELL);
+            int x = brain->get_value(cell_base + X_SPRITE_BASE_CELL);
+            int y = brain->get_value(cell_base + Y_SPRITE_BASE_CELL);
+            _lcd->setCursor(x, y);
+            _lcd->write(byte(s));
+        }
+    }
+}
+
+bool BrainStation::isGameOver(Brain *brain)
+{
+  return brain->get_value(IS_GAME_OVER_CELL) == GAME_OVER; 
 }
