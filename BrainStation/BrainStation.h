@@ -16,6 +16,7 @@
  #include "WProgram.h"
 #endif
 
+#include <LiquidCrystal.h>
 #include <BrainDelegate.h>
 
 /**
@@ -25,9 +26,12 @@
 class BrainStation : public BrainDelegate
 {
 public:
+    BrainStation(LiquidCrystal *lcd, byte **sprites, int n_sprites);
     ~BrainStation() {}
     void update(Brain *brain);
 private:
+    byte **_sprites;
+    LiquidCrystal *_lcd;
 };
 
 #endif // BRAINSTATION_H

@@ -7,7 +7,18 @@
 
 #include "BrainStation.h"
 
+BrainStation::BrainStation(LiquidCrystal *lcd, byte **sprites, int n_sprites)
+{
+    _sprites = sprites;
+    _lcd = lcd;
+    if (_lcd) {
+        for (int i = 0; i < n_sprites; i++) {
+            _lcd->createChar(i, sprites[i]);
+        }
+    }
+}
+
 void BrainStation::update(Brain *brain)
 {
-
+    _lcd->write(byte(0));
 }
