@@ -38,6 +38,22 @@ void BrainStation::update(Brain *brain)
     }
 }
 
+void BrainStation::handleEvents(Brain *brain, Stream *stream_in)
+{
+    while (stream_in->available()) {
+        if (stream_in->read() == 'b' && stream_in->read() == 't') {
+            char c = stream_in->read() - '0';
+            Serial.print((int)c);
+            if (c >= 0 && c <= 5) {
+                brain->setValue(c, brain->getValue(c) + 1);
+            } // else, btn will not be handled 
+        } else {
+            // clear input if it comes garbage
+            stream_in->flush();
+        }
+    }
+}
+
 bool BrainStation::isGameOver(Brain *brain)
 {
   return brain->getValue(IS_GAME_OVER_CELL) == GAME_OVER;

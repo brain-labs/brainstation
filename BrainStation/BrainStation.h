@@ -17,6 +17,7 @@
 #endif
 
 #include <LiquidCrystal.h>
+#include <Stream.h>
 #include <BrainDelegate.h>
 
 #define GAME_OVER 1
@@ -43,6 +44,7 @@ class BrainStation : public BrainDelegate
 public:
     BrainStation(LiquidCrystal *lcd, byte **sprites, int n_sprites);
     void update(Brain *brain);
+    void handleEvents(Brain *brain, Stream *stream_in);
 private:
     byte **_sprites;
     LiquidCrystal *_lcd;
