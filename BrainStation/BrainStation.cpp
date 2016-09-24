@@ -38,18 +38,17 @@ void BrainStation::update(Brain *brain)
     }
 }
 
-void BrainStation::handleEvents(Brain *brain, Stream *stream_in)
+void BrainStation::handleEvents(Brain *brain, const char *input, int length)
 {
-    while (stream_in->available()) {
-        if (stream_in->read() == 'b' && stream_in->read() == 't') {
-            char c = stream_in->read() - '0';
-            Serial.print((int)c);
-            if (c >= 0 && c <= 5) {
+    int i = 0;
+    while (i <= length) {
+        if (input[i++] == 'b' && input[i++] == 't') {
+            char c = input[i++] - '0';
+            if(c >= 0 && c <= 5) {
                 brain->setValue(c, brain->getValue(c) + 1);
-            } // else, btn will not be handled 
+            } // else, btn will no be handled
         } else {
-            // clear input if it comes garbage
-            stream_in->flush();
+            return;
         }
     }
 }
