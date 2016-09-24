@@ -30,7 +30,7 @@ void setup()
   Serial.begin(57600);
   lcd.begin(16, 2);
   lcd.noAutoscroll();
-  brain.set_code(">>>>>>>?:++;>>>>+>>>>>>?:+;");
+  brain.setCode(">>>>>>>?:++;>>>>+>>>>>>?:+;");
 }
 
 void loop()

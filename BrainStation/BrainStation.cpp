@@ -25,13 +25,13 @@ void BrainStation::update(Brain *brain)
         _lcd->clear();
         delay(10);
 
-        for (int i = 0, n_objects = brain->get_value(N_OBJECTS_CELL);
+        for (int i = 0, n_objects = brain->getValue(N_OBJECTS_CELL);
              i < n_objects;
              i++) {
             int cell_base = i * CTRL_CELLS;
-            int s = brain->get_value(cell_base + NUM_SPRITE_BASE_CELL);
-            int x = brain->get_value(cell_base + X_SPRITE_BASE_CELL);
-            int y = brain->get_value(cell_base + Y_SPRITE_BASE_CELL);
+            int s = brain->getValue(cell_base + NUM_SPRITE_BASE_CELL);
+            int x = brain->getValue(cell_base + X_SPRITE_BASE_CELL);
+            int y = brain->getValue(cell_base + Y_SPRITE_BASE_CELL);
             _lcd->setCursor(x, y);
             _lcd->write(byte(s));
         }
@@ -40,5 +40,5 @@ void BrainStation::update(Brain *brain)
 
 bool BrainStation::isGameOver(Brain *brain)
 {
-  return brain->get_value(IS_GAME_OVER_CELL) == GAME_OVER; 
+  return brain->getValue(IS_GAME_OVER_CELL) == GAME_OVER;
 }

@@ -42,7 +42,6 @@ class BrainStation : public BrainDelegate
 {
 public:
     BrainStation(LiquidCrystal *lcd, byte **sprites, int n_sprites);
-    ~BrainStation() {}
     void update(Brain *brain);
 private:
     byte **_sprites;
