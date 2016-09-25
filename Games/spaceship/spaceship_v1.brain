@@ -1,0 +1,26 @@
+>>>>>>>?:+;<<<<<<< create one object
+
+check if the user pressed the ARROW UP
+>?->>>>>>>->>-<<<<<<<:>>; go to ARROW DOWN cell
+?->>>>>+>>+:>>>>>>>;
+
+<?:++; put number 2 as control on 9th cell
+>% get sprite
+
++?-:+; if 10th cell equals to minus 1 then is equal to sprite 1
+<<+?-:+++; if 10th equals to minus 1 then is equal to 3
+
+>>>>[-] clean 12th cell
+<<<<  go to the 8th cell
+--? check if cell is equal to 2
+ -? check if cell is equal to 3
+   -? check if cell is equal to 4
+         ++++ add 4 if cell is not equal to 4
+    : do nothing if cell is equal to 4
+    ;
+  : if cell is equal to 3
+    +++>>>>+<<<< 
+  ;
+:  if cell equal to 2 add 1
+++>>>>+<<<<
+;

@@ -1,0 +1,63 @@
+>>>>>>>?:++;<<<<<<< create two objects
+
+check if the user pressed the ARROW UP
+>?->>>>>>>->>-<<<<<<<:>>; go to ARROW DOWN cell
+?->>>>>+>>+:>>>>>>>;
+
+<?:++; put number 2 as control on 9th cell
+>% get sprite
+
++?-:+; if 10th cell equals to minus 1 then is equal to sprite 1
+<<+?-:+++; if 10th equals to minus 1 then is equal to 3
+
+>>>>[-] clean 12th cell
+<<<<  go to the 8th cell
+--? check if cell is equal to 2
+ -? check if cell is equal to 3
+   -? check if cell is equal to 4
+         ++++ add 4 if cell is not equal to 4
+    : do nothing if cell is equal to 4
+    ;
+  : if cell is equal to 3
+    +++>>>>+<<<<
+  ;
+:  if cell equal to 2 add 1
+++>>>>+<<<<
+;
+
+<<<<? check if there is laser at 4th cell
+- clear cell
+>>>>>>>>>>> go to cell 15
+[-] clear cell 15
+<<<<<{>>>>>+<<<<<}>>>>>++ copy the number from cell 10 
+                     to cell 15 plus 2
+>[-]clear cell 16 
+<<<<<{>>>>>+<<<<<} copy from cell 11 to 16 the x position
+>>>>>>[-] clear cell 17
+<<<<<{>>>>>+<<<<<} copy form cell 12 to 17
+>?:+; put one on 13th cell because that will mean visible
+:
+  >>>>>>>>>
+;
+
+we are at cell 13
+   -? if the laser is not visible 
+      + put the number back
+      >>>> go to cell 17 and check if it is equals to minus 1
+      +? if cell 17 is not minus one
+         [-] clear cell
+          - subtract one 
+       : do nothing if the cell is already minus one
+       ;
+    : if the laser is visible
+       + put the number back
+       >>>> go to cell 17 to check if it is more than 15
+       --------------- sub 15 at 17th cell
+       ? if is not equal to 15
+       ++++++++++++++++ add 1
+       :
+         - if it is equal do 15 we put it visible false
+         <<<< [-]
+       ;
+    ;
+
