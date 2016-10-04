@@ -13,35 +13,60 @@
 #include <BrainStation.h>
 #include <LiquidCrystal.h>
 
-byte spaceship1[8] = {
-  0b10000,
-  0b11000,
-  0b11100,
-  0b11000,
-  0b10000,
-  0b00000,
-  0b00000,
-  0b00000
+byte human1[8] = {
+  B01100,
+  B01100,
+  B00000,
+  B01110,
+  B11100,
+  B01100,
+  B11010,
+  B10011
 };
 
-byte spaceship2[8] = {
-  0b00000,
-  0b00000,
-  0b00000,
-  0b10000,
-  0b11000,
-  0b11100,
-  0b11000,
-  0b10000
+byte human2[8] = {
+  B01100,
+  B01100,
+  B00000,
+  B01100,
+  B01100,
+  B01100,
+  B01100,
+  B01010
 };
+
+byte monster1[8] = {
+  0b01110,
+  0b11111,
+  0b01110,
+  0b11111,
+  0b11111,
+  0b01110,
+  0b01010,
+  0b10001
+};
+
+byte monster2[8] = {
+  0b01110,
+  0b11111,
+  0b01110,
+  0b11111,
+  0b11111,
+  0b01110,
+  0b00100,
+  0b00100
+};
+
 
 byte *sprites[] = {
-  (byte*)spaceship1,
-  (byte*)spaceship2,
+  (byte*)human1,
+  (byte*)human2,
+  (byte*)monster1,
+  (byte*)monster2,
 };
 
 LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
-BrainStation brain_station = BrainStation(&lcd, sprites, 2);
+BrainStation brain_station = BrainStation(&lcd, sprites, 4);
 Brain brain = Brain(&lcd, &Serial, &brain_station, analogRead(0));
 
 void setup()
@@ -56,11 +81,12 @@ void setup()
 
   lcd.begin(16, 2);
   lcd.noAutoscroll();
-  brain.setCode(">>>>>>>?:+;<<<<<<?->>>>>>>->>-<<<<<<<:>>;?->>>>>+>>+:>>>>>>>;<?:++;>%+?-:+;<<+?-:+++;>>>>[-]<<<<--?-?-?++++;:+++>>>>+<<<<;:++>>>>+<<<<;");
+  brain.setCode(">?->>>>>>>>>>>-<<<<<<<<<:>>;?->>>>>>>>>+<<<<<:>>>>;?:++;>>?:++;>+%>>>>?:++;>+%++>?-:+++++++++++++++;");
 }
 
 void loop()
 {
+  Serial.print(brain.getValue(15));
   while (ble_available()) {
       char str[3];
       for (int i = 0; i < 3; i++) {
