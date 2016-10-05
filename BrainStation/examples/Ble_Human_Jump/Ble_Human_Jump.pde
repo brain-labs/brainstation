@@ -81,12 +81,31 @@ void setup()
 
   lcd.begin(16, 2);
   lcd.noAutoscroll();
-  brain.setCode(">?->>>>>>>>>>>-<<<<<<<<<:>>;?->>>>>>>>>+<<<<<:>>>>;?:++;>>?:++;>+%>>>>?:++;>+%++>?-:+++++++++++++++;");
+  /*
+  setup
+  >>>>>>>?:++; only two sprites at cell 7
+  make cells for later jump
+  >?<<<<<:++++++++>+*>+*>+++++++*<--*<---*<<<<<<;
+  
+  ?->>>>>>^>>>+<<<<?:+;^:<<; if btn DOWN set plus Y of human
+  ?->>>>>>>>^>>>-<<<<?:+;^; if btn UP set minus Y of human
+  
+  player
+  >>>>>>>>^?:++; make number two if cell 41 is empty
+  >+% sum one to cell 42 and take it mod 2 because of the sprite
+  <<^ go back to cell 1
+  
+  monster 1
+  >>>>>>>>>>^?:++; make number two if cell 48 is empty
+  >+%++ sum three to cell 49 and take it mod 2 because of monster
+  >?-:+++++++++++++++; if cell 16 is equal to 0 then is equal to 15
+ */
+  
+  brain.setCode(">>>>>>>?:++;>?<<<<<:++++++++>+*>+*>+++++++*<--*<---*<<<<<<;?->>>>>>^>>>+<<<<^:<<;?->>>>>>>>^>>>-<<<<^;>>>>>>>>^?:++;>+%<<?:+;^>>>>>>>>>^?:++;>+%++>?-:+++++++++++++++;");
 }
 
 void loop()
-{
-  Serial.print(brain.getValue(15));
+{  
   while (ble_available()) {
       char str[3];
       for (int i = 0; i < 3; i++) {
