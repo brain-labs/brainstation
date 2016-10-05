@@ -20,8 +20,9 @@
 #include <BrainDelegate.h>
 
 #define GAME_OVER 1
-#define CTRL_CELLS 5
+#define CTRL_CELLS 8
 
+// keys 0 through 15 are control cells
 #define KEY_LEFT_CELL 0
 #define KEY_UP_CELL 1
 #define KEY_RIGHT_CELL 2
@@ -30,9 +31,12 @@
 #define KEY_B_CELL 5
 #define IS_GAME_OVER_CELL 6
 #define N_OBJECTS_CELL 7
-#define NUM_SPRITE_BASE_CELL 10
-#define X_SPRITE_BASE_CELL 11
-#define Y_SPRITE_BASE_CELL 12
+
+// the cells 8 through 15 are for custom controls
+
+#define NUM_SPRITE_BASE_CELL 21
+#define X_SPRITE_BASE_CELL 22
+#define Y_SPRITE_BASE_CELL 23
 
 /**
  * @brief Represents the Brain Station Console and also provide functions to be

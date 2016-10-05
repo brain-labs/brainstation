@@ -21,10 +21,10 @@ BrainStation::BrainStation(LiquidCrystal *lcd, byte **sprites, int n_sprites)
 
 void BrainStation::update(Brain *brain)
 {
+    _lcd->clear();
+    delay(10);
+    
     if (!isGameOver(brain)) {
-        _lcd->clear();
-        delay(10);
-
         for (int i = 0, n_objects = brain->getValue(N_OBJECTS_CELL);
              i < n_objects;
              i++) {
@@ -35,6 +35,9 @@ void BrainStation::update(Brain *brain)
             _lcd->setCursor(x, y);
             _lcd->write(byte(s));
         }
+    } else {
+        _lcd->setCursor(0, 0);
+        _lcd->write("Game Over");    
     }
 }
 
