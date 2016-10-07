@@ -1,3 +1,11 @@
+
+*
+!/**/
+!*.*
+*.o
+*.s
+a.out
+
 # Compiled Object files
 *.slo
 *.lo

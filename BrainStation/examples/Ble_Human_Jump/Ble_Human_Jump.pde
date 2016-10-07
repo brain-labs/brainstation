@@ -87,21 +87,21 @@ void setup()
   make cells for later jump
   >?<<<<<:++++++++>+*>+*>+++++++*<--*<---*<<<<<<;
   
-  ?->>>>>>^>>>+<<<<?:+;^:<<; if btn DOWN set plus Y of human
-  ?->>>>>>>>^>>>-<<<<?:+;^; if btn UP set minus Y of human
+  ?->>>>>>^>>>+<<<<^:<<; if btn DOWN set plus Y of human
+  ?->>>>>>>>^>>>-<<<<^; if btn UP set minus Y of human
   
   player
   >>>>>>>>^?:++; make number two if cell 41 is empty
   >+% sum one to cell 42 and take it mod 2 because of the sprite
-  <<^ go back to cell 1
+  <<?:+;^ go back to cell 1
   
   monster 1
-  >>>>>>>>>>^?:++; make number two if cell 48 is empty
+  >>>>>>>>>^?:++; make number two if cell 48 is empty
   >+%++ sum three to cell 49 and take it mod 2 because of monster
-  >?-:+++++++++++++++; if cell 16 is equal to 0 then is equal to 15
+  >?--:++>_%<++++++++++++; if cell 16 is equal to 0 then is equal to 15
  */
-  
-  brain.setCode(">>>>>>>?:++;>?<<<<<:++++++++>+*>+*>+++++++*<--*<---*<<<<<<;?->>>>>>^>>>+<<<<^:<<;?->>>>>>>>^>>>-<<<<^;>>>>>>>>^?:++;>+%<<?:+;^>>>>>>>>>^?:++;>+%++>?-:+++++++++++++++;");
+
+  brain.setCode(">>>>>>>?:++;>?<<<<<:++++++++>+*>+*>+++++++*<--*<---*<<<<<<;?->>>>>>^>>>+<<<<^:<<;?->>>>>>>>^>>>-<<<<^;>>>>>>>>^?:++;>+%<<?:+;^>>>>>>>>>^?:++;>+%++>?--:++>_%<++++++++++++;");
 }
 
 void loop()
@@ -111,6 +111,15 @@ void loop()
       for (int i = 0; i < 3; i++) {
           str[i] = ble_read();
       }
+
+      if (str[0] == 'g' && str[1] == 'm') {
+        if (str[2] == 'o') { // game over
+          brain.setValue(6, 1);
+        } else if (str[2] == 's') { // game start
+          brain.reset();
+          brain.setValue(6, 0);
+        }
+      } 
       
       brain_station.handleEvents(&brain, str, 3);
   }

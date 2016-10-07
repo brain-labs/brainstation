@@ -14,5 +14,5 @@ player
 monster 1
 >>>>>>>>>^?:++; make number two if cell 48 is empty
 >+%++ sum three to cell 49 and take it mod 2 because of monster
->?-:+++++++++++++++; if cell 16 is equal to 0 then is equal to 15
+>?--:++>_%<++++++++++++; if cell 16 is equal to 0 then is equal to 15
 
