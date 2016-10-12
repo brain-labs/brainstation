@@ -92,6 +92,7 @@ void setup()
   
   player
   >>>>>>>>^?:++; make number two if cell 41 is empty
+  <<?:++++++;>> go to cell 38 and make it 6 if empty
   >+% sum one to cell 42 and take it mod 2 because of the sprite
   <<?:+;^ go back to cell 1
   
@@ -99,13 +100,26 @@ void setup()
   >>>>>>>>>^?:++; make number two if cell 48 is empty
   >+%++ sum three to cell 49 and take it mod 2 because of monster
   >?--:++>_%<++++++++++++; if cell 16 is equal to 0 then is equal to 15
- */
+  
+  ?: if cell 50 is equal to zero
+     > go to cell 51
+     ? check if it is equal different from zero
+       <<<<<<<< go to cell 43
+       ?<<<<<^?:+;; if cell different from zero then game over
+     : if cell 51 equal to zero
+       <<<<<<<< go to cell 43
+       ?:<<<<<^?:+;; if cell equal to zero then game over
+     ;
+  ;
 
-  brain.setCode(">>>>>>>?:++;>?<<<<<:++++++++>+*>+*>+++++++*<--*<---*<<<<<<;?->>>>>>^>>>+<<<<^:<<;?->>>>>>>>^>>>-<<<<^;>>>>>>>>^?:++;>+%<<?:+;^>>>>>>>>>^?:++;>+%++>?--:++>_%<++++++++++++;");
+ */
+  
+  brain.setCode(">>>>>>>?:++;>?<<<<<:++++++++>+*>+*>+++++++*<--*<---*<<<<<<;?->>>>>>^>>>+<<<<^:<<;?->>>>>>>>^>>>-<<<<^;>>>>>>>>^?:++;<<?:++++++;>>>+%<<?:+;^>>>>>>>>>^?:++;>+%++>?--:++>_%<++++++++++++;?:>?<<<<<<<<?<<<<<^?:+;;:<<<<<<<<?:<<<<<^?:+;;;;");
 }
 
 void loop()
 {  
+  Serial.print(brain.getValue(38));
   while (ble_available()) {
       char str[3];
       for (int i = 0; i < 3; i++) {
@@ -113,18 +127,19 @@ void loop()
       }
 
       if (str[0] == 'g' && str[1] == 'm') {
-        if (str[2] == 'o') { // game over
-          brain.setValue(6, 1);
-        } else if (str[2] == 's') { // game start
-          brain.reset();
-          brain.setValue(6, 0);
-        }
-      } 
+         if (str[2] == 's') {
+           brain.reset();
+           brain.setValue(6, 0);
+         } else if (str[2] == 'o') {
+           brain.reset();
+           brain.setValue(6, 1);
+         }
+      }
       
       brain_station.handleEvents(&brain, str, 3);
   }
   
   brain.run();
   ble_do_events();
-  delay(200);
+  delay(400);
 }
