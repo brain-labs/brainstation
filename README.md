@@ -52,3 +52,10 @@ Obs.2: The BrainStation has a maximum of 7 objects because of the Arduino and LC
 <p align="center">
 	<img alt="BrainStation" src="./img/brainstation.jpg" />
 </p>
+
+
+### Help
+Feel free to send your pull requests. :)
+
+### LICENSE
+This project extends [GNU GPL v. 3](http://www.gnu.org/licenses/gpl-3.0.en.html), so be aware of that, regarding copying, modifying and (re)destributing.
