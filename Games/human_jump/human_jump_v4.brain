@@ -1,0 +1,29 @@
+setup
+>>>>>>>?:++; only two sprites at cell 7
+make cells for later jump
+>?<<<<<:++++++++>+*>+*>+++++++*<--*<---*<<<<<<;
+
+?->>>>>>^>>>+<<<<^:<<; if btn DOWN set plus Y of human
+?->>>>>>>>^>>>-<<<<^; if btn UP set minus Y of human
+
+player
+>>>>>>>>^?:++; make number two if cell 41 is empty
+<<?:++++++;>> go to cell 38 and make it 6 if empty
+>+% sum one to cell 42 and take it mod 2 because of the sprite
+<<?:+;^ go back to cell 1
+
+monster 1
+>>>>>>>>>^?:++; make number two if cell 48 is empty
+>+%++ sum three to cell 49 and take it mod 2 because of monster
+>?--:++>_%<++++++++++++; if cell 16 is equal to 0 then is equal to 15
+
+?: if cell 50 is equal to zero
+   > go to cell 51
+   ? check if it is equal different from zero
+     <<<<<<<< go to cell 43
+     ?<<<<<^?:+;; if cell different from zero then game over
+   : if cell 51 equal to zero
+     <<<<<<<< go to cell 43
+     ?:<<<<<^?:+;; if cell equal to zero then game over
+   ; 
+;
