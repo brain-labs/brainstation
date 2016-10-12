@@ -13,6 +13,7 @@ BrainStation	KEYWORD1
 #######################################
 
 update	KEYWORD2
+handleEvents	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)

@@ -1,0 +1,15 @@
+setup
+
+>?->>>>>>>>>>>-<<<<<<<<<:>>; if btn UP set minus Y of human
+?->>>>>>>>>+<<<<<:>>>>; if btn DOW set plus Y of human
+?:++; two sprites only at cell 7
+
+player
+>>?:++; make number two if cell 9 is empty
+>+% sum one to cell 10 and take it mod 2 because of the sprite
+
+monster 1
+>>>>?:++; make number two if cell 14 is empty
+>+%++ sum three to cell 15 and take it mod 2 because of monster
+>?-:+++++++++++++++; if cell 16 is equal to 0 then is equal to 15
+

@@ -21,24 +21,42 @@ BrainStation::BrainStation(LiquidCrystal *lcd, byte **sprites, int n_sprites)
 
 void BrainStation::update(Brain *brain)
 {
+    _lcd->clear();
+    delay(10);
+    
     if (!isGameOver(brain)) {
-        _lcd->clear();
-        delay(10);
-
-        for (int i = 0, n_objects = brain->get_value(N_OBJECTS_CELL);
+        for (int i = 0, n_objects = brain->getValue(N_OBJECTS_CELL);
              i < n_objects;
              i++) {
             int cell_base = i * CTRL_CELLS;
-            int s = brain->get_value(cell_base + NUM_SPRITE_BASE_CELL);
-            int x = brain->get_value(cell_base + X_SPRITE_BASE_CELL);
-            int y = brain->get_value(cell_base + Y_SPRITE_BASE_CELL);
+            int s = brain->getValue(cell_base + NUM_SPRITE_BASE_CELL);
+            int x = brain->getValue(cell_base + X_SPRITE_BASE_CELL);
+            int y = brain->getValue(cell_base + Y_SPRITE_BASE_CELL);
             _lcd->setCursor(x, y);
             _lcd->write(byte(s));
+        }
+    } else {
+        _lcd->setCursor(0, 0);
+        _lcd->write("Game Over");    
+    }
+}
+
+void BrainStation::handleEvents(Brain *brain, const char *input, int length)
+{
+    int i = 0;
+    while (i <= length) {
+        if (input[i++] == 'b' && input[i++] == 't') {
+            char c = input[i++] - '0';
+            if(c >= 0 && c <= 5) {
+                brain->setValue(c, brain->getValue(c) + 1);
+            } // else, btn will no be handled
+        } else {
+            return;
         }
     }
 }
 
 bool BrainStation::isGameOver(Brain *brain)
 {
-  return brain->get_value(IS_GAME_OVER_CELL) == GAME_OVER; 
+  return brain->getValue(IS_GAME_OVER_CELL) == GAME_OVER;
 }
