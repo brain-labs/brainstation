@@ -5,6 +5,14 @@
 # BrainStation
 Perhaps the smallest full-working video game console for Arduino. BrainStation is a proof of concept for the [Brainduino interpreter](https://github.com/brain-labs/brainduino)
 
+### Proof of Concept
+
+- Human Jump _// Avoiding obstacles controlling the character through Bluetooth_
+
+<p align="center">
+        <img alt="HumanJump" src="./img/human_jump.gif" />
+</p>
+
 ### Status
 In development mode, please check the [dev branch](https://github.com/brain-labs/brainstation/tree/dev)
 
