@@ -7,7 +7,42 @@ Perhaps the smallest full-working video game console for Arduino. BrainStation i
 
 ### Proof of Concept
 
-- Human Jump _// Avoiding obstacles controlling the character through Bluetooth_
+- __Human Jump__ _// Avoiding obstacles controlling the character through Bluetooth_
+
+- Code:
+
+```Brainfuck
+setup
+>>>>>>>?:++; we will only have two sprites at cell 7
+build values for distant cells for later jump
+>?<<<<<:++++++++>+*>+*>+++++++*<--*<---*<<<<<<;
+
+?->>>>>>^>>>+<<<<^:<<; if btn DOWN add Y of human object
+?->>>>>>>>^>>>-<<<<^; if btn UP subtract Y of human object
+
+player
+>>>>>>>>^?:++; make number two if cell 41 is empty
+<<?:++++++;>> go to cell 38 and make it 6 if empty
+>+% add 1 to cell 42 and take it mod 2 because of the sprite number
+<<?:+;^ go back to cell 1
+
+monster 1
+>>>>>>>>>^?:++; go to cell 48 and make number two if cell 48 is empty
+>+%++ add 1 to cell 49 and take it mod 2 and add 2 because of monster sprite
+>?--:++>_%<++++++++++++; if cell 16 is equal to 0 then we reset it to 15
+
+?: if cell 50 is equal to zero
+   > go to cell 51
+   ? check if it is different from zero
+     <<<<<<<< go to cell 43
+     ?<<<<<^?:+;; if cell 43 different from zero then game over
+   : if cell 51 equal to zero
+     <<<<<<<< go to cell 43
+     ?:<<<<<^?:+;; if cell equal to zero then game over
+   ; 
+;
+```
+- Result:
 
 <p align="center">
         <img alt="HumanJump" src="./img/human_jump.gif" />
