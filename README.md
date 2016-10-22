@@ -13,7 +13,7 @@
 # BrainStation
 > Perhaps the smallest full-working video game console for Arduino based on the NES Emulator [`jamulator`](https://github.com/andrewrk/jamulator). It is also a proof of concept for the [Brainduino interpreter](https://github.com/brain-labs/brainduino)
 
-# <img src="https://brain-labs.github.io/brain-visualizer/img/table_of_contents.png" alt="table of contents">
+# <img src="./img/table_of_contents.png" alt="table of contents">
 
 - [Proof of Concept](#proof-of-concept)
 - [Status](#status)
