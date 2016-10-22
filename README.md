@@ -11,12 +11,14 @@
 [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.png?v=103)](https://opensource.org/licenses/GPL-3.0/)
 
 # BrainStation
-Perhaps the smallest full-working video game console for Arduino based on the NES Emulator [`jamulator`](https://github.com/andrewrk/jamulator). It is also a proof of concept for the [Brainduino interpreter](https://github.com/brain-labs/brainduino)
+> Perhaps the smallest full-working video game console for Arduino based on the NES Emulator [`jamulator`](https://github.com/andrewrk/jamulator). It is also a proof of concept for the [Brainduino interpreter](https://github.com/brain-labs/brainduino)
 
-## Table of Contents
+# <img src="https://brain-labs.github.io/brain-visualizer/img/table_of_contents.png" alt="table of contents">
+
 - [Proof of Concept](#proof-of-concept)
 - [Status](#status)
 - [Installation](#installation)
+- [TODO](#todo)
 - [How it works](#how-it-works)
   - [Control Cells](#control-cells)
   - [Custom Cells](#custom-cells)
@@ -75,6 +77,12 @@ monster 1
 
 ### Status
 In development mode, please check the [dev branch](https://github.com/brain-labs/brainstation/tree/dev)
+
+| To Do | In Progress | Done  |
+| :---: | :---------: | :---: |
+|![PostIt](http://api.ideiadoluiz.com.br/postit/?title=%20%237&desc=Release%20v1.0%20on%20the%20Brain%20package)|![PostIt](http://api.ideiadoluiz.com.br/postit/?title=%20%237&desc=Implement%202nd%20proof%20of%20concept%20(Spaceships%20with%20laser))|![PostIt](http://api.ideiadoluiz.com.br/postit/?title=%20%231&desc=Implement%20BLE%20Shield%20Commands)![PostIt](http://api.ideiadoluiz.com.br/postit/?title=%20%232&desc=Implement%20BrainDelegate%20for%20Brainduino)|
+|||![PostIt](http://api.ideiadoluiz.com.br/postit/?title=%20%233&desc=Make%20Listener%20for%20all%20button%20events,%20LEFT,%20UP,%20RIGHT,%20DOWN,%20A%20and%20B)![PostIt](http://api.ideiadoluiz.com.br/postit/?title=%20%234&desc=Stop%20Console%20when%20Game%20Over%20Cell%20is%20true)|
+|||![PostIt](http://api.ideiadoluiz.com.br/postit/?title=%20%235&desc=Make%20Object%20move%20in%20Brain)![PostIt](http://api.ideiadoluiz.com.br/postit/?title=%20%236&desc=Implement%201st%20proof%20of%20concept%20(Human%20Jump))|
 
 ### Installation
 You can follow the instructions given here: [https://github.com/brain-labs/brainduino](https://github.com/brain-labs/brainduino)
