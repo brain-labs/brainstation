@@ -11,7 +11,7 @@
 [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.png?v=103)](https://opensource.org/licenses/GPL-3.0/)
 
 # BrainStation
-> Perhaps the smallest full-working video game console for Arduino based on the NES Emulator [`jamulator`](https://github.com/andrewrk/jamulator). It is also a proof of concept for the [Brainduino interpreter](https://github.com/brain-labs/brainduino)
+> Perhaps the smallest full-working video game console for Arduino based on the NES Emulator and the project [`jamulator`](https://github.com/andrewrk/jamulator). It is also a proof of concept for the [Brainduino interpreter](https://github.com/brain-labs/brainduino), an interpreter of the [Brain Language](https://github.com/brain-labs/brain) targetting Arduino.
 
 # <img src="./img/table_of_contents.png" alt="table of contents">
 
@@ -33,7 +33,7 @@
         <img alt="HumanWalking" src="./img/human_walking.gif" />
 </p>
 
-- __Human Jump__ _// Avoiding obstacles controlling the character through Bluetooth_
+- __Human Jump__ _// Avoiding obstacles by controlling a character through Bluetooth on an iPhone_
 
 - Game:
 
@@ -45,38 +45,38 @@
 
 ```Brainfuck
 setup
->>>>>>>?:++; we will only have two sprites at cell 7
-build values for distant cells for later jump
+>>>>>>>?:++; make the count of two sprites at cell 7
+build values for distant cells so we can jump later
 >?<<<<<:++++++++>+*>+*>+++++++*<--*<---*<<<<<<;
 
-?->>>>>>^>>>+<<<<^:<<; if btn DOWN add Y of human object
-?->>>>>>>>^>>>-<<<<^; if btn UP subtract Y of human object
+?->>>>>>^>>>+<<<<^:<<; if btn DOWN is pressed increment Y position of human object
+?->>>>>>>>^>>>-<<<<^; if btn UP is pressed decrement Y position of human object
 
 player
->>>>>>>>^?:++; make number two if cell 41 is empty
-<<?:++++++;>> go to cell 38 and make it 6 if empty
->+% add 1 to cell 42 and take it mod 2 because of the sprite number
+>>>>>>>>^?:++; write the number two if cell 41 is empty
+<<?:++++++;>> go to cell 38 and make it 6 if it is empty
+>+% increment cell 42 and take it mod 2 because so we can change the sprite
 <<?:+;^ go back to cell 1
 
 monster 1
 >>>>>>>>>^?:++; go to cell 48 and make number two if cell 48 is empty
->+%++ add 1 to cell 49 and take it mod 2 and add 2 because of monster sprite
->?--:++>_%<++++++++++++; if cell 16 is equal to 0 then we reset it to 15
+>+%++ increment cell 49 and take it mod 2 and add 2 so we can change its sprite
+>?--:++>_%<++++++++++++; if cell 16 is equal to 0 then we reset it to the number 15
 
-?: if cell 50 is equal to zero
-   > go to cell 51
-   ? check if it is different from zero
-     <<<<<<<< go to cell 43
-     ?<<<<<^?:+;; if cell 43 different from zero then game over
+?: check if cell 50 is equal to zero
+   > go to cell 51 in case it is
+   ? check if 51 is different from zero
+     <<<<<<<< go to cell 43 in case it is
+     ?<<<<<^?:+;; if cell 43 different from zero then the game is over
    : if cell 51 equal to zero
      <<<<<<<< go to cell 43
-     ?:<<<<<^?:+;; if cell equal to zero then game over
+     ?:<<<<<^?:+;; if cell equal to zero then the game is over
    ; 
 ;
 ```
 
 ### Status
-In development mode, please check the [dev branch](https://github.com/brain-labs/brainstation/tree/dev)
+Brainduino is currently in development mode, please check the [dev branch](https://github.com/brain-labs/brainstation/tree/dev)
 
 | To Do | In Progress | Done  |
 | :---: | :---------: | :---: |
@@ -85,14 +85,14 @@ In development mode, please check the [dev branch](https://github.com/brain-labs
 |||![PostIt](http://api.ideiadoluiz.com.br/postit/?title=%20%235&desc=Make%20Object%20move%20in%20Brain)![PostIt](http://api.ideiadoluiz.com.br/postit/?title=%20%236&desc=Implement%201st%20proof%20of%20concept%20(Human%20Jump))|
 
 ### Installation
-You can follow the instructions given here: [https://github.com/brain-labs/brainduino](https://github.com/brain-labs/brainduino)
+You may install `BrainStation` by following the instructions given here: [https://github.com/brain-labs/brainduino](https://github.com/brain-labs/brainduino)
 
-### How it works
-BrainStation is based on old video game consoles such as NES and SNES and has its own PPU (Picture Processing Unit). That being said, the Arduino will follow some steps:
+### How BrainStation works
+BrainStation is based on old video game consoles such as NES and SNES and has its own PPU (Picture Processing Unit). That being said, its code will be executed by following a sequence of steps:
 
-- Check for external user input and set the `cells 0 trough 5`, if they are active.
-- Run the Brainduino as the CPU cycle (setting the values of the fields).
-- Run the BrainStation as the PPU cycle (drawing the elements on the LCD).
+- 1. Check for external user input and set the `cells 0 trough 5`, if they are active (see [Control Cells](#control-cells)).
+- 2. Run the Brainduino as the CPU cycle (setting the values of the fields and running the `Brain` script code).
+- 3. Run the BrainStation as the PPU cycle (drawing the elements on the LCD).
 
 The BrainStation uses the Brainduino cells (__100 cells__ because of the Arduino __limitation__) as its _Turing Tape_ and has this format:
 
@@ -117,7 +117,7 @@ The BrainStation uses the Brainduino cells (__100 cells__ because of the Arduino
 | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :---------: | :---------: | :--------: |
 | Cell 8   | Cell 9   | Cell 10  |   ...    |   ...    |    ...   |    ...   |  Cell 33    | Cell 34     |   Cell 35  |
 
-- `Cells 8 through 35`: Custom Cells (You can use them for any kind of operation)
+- `Cells 8 through 35`: Custom Cells (You can use them for any kind of operations)
 
 #### Object 1 Cells
 
@@ -154,5 +154,5 @@ Obs.2: The BrainStation has a maximum of 7 objects because of the Arduino and LC
 Feel free to send your pull requests. :)
 
 ### LICENSE
-This project extends [GNU GPL v. 3](http://www.gnu.org/licenses/gpl-3.0.en.html), so be aware of that, regarding copying, modifying and (re)destributing.
+This project extends [GNU GPL v. 3](http://www.gnu.org/licenses/gpl-3.0.en.html), thus be aware of that, regarding copying, modifying and (re)destributing.
 
